@@ -1,0 +1,51 @@
+<html>
+  <head>
+    <title>Multiplication Chart</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Multiplication Table</h1>
+      <table id="multiplication-table" border="1">
+        <thead>
+          <th>Multiplication</th>
+          <th>Result</th>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>    
+    <script type="text/javascript">  
+      var table = document.getElementById('multiplication-table'); // select table element to append elements.
+      var tableBody = table.tBodies[0]; // select body to append rows.
+      var tableNumber = 8; // times table for, e.g.value 8 generate multiplication table for 8.
+      var tableUpTo = 10; // generate table up to.
+
+      /** Loop to create table rows */
+      for (var i = 1; i <= tableUpTo; i++) { // table starts from 1 not 0, hence the index.
+         var currentRow = createRow(i);
+         tableBody.appendChild(currentRow);
+      }
+      /** Creates a row of table */
+      function createRow(index) {
+        var row = document.createElement('tr'); // create table row.
+        var multiplicationCell = createMultiplicationCell(index); // create first cell.
+        row.appendChild(multiplicationCell); // append first cell.
+        var resultCell = createResultCell(index); // create second cell.
+        row.appendChild(resultCell);// append second cell.
+        return row;
+      }
+      /** Creates second cell of the row. */
+      function createResultCell(index) {
+        var cell = document.createElement('td'); // create cell.
+        cell.innerHTML = index * tableNumber; // append result text - e.g. 8|16|32 etc.
+        return cell;
+      }
+      /** Creates first cell of the row. */
+      function createMultiplicationCell(index) {
+        var cell = document.createElement('td'); // create cell.
+        cell.innerHTML = '' + index + ' x ' + tableNumber; // append text - e.g. 1 * 8 etc
+        return cell;
+      }
+    </script>
+  </body>
+</html>
